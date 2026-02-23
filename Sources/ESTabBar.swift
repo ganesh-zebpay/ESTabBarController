@@ -198,6 +198,7 @@ internal extension ESTabBar /* Layout */ {
         
         if isCustomizing {
             for (idx, _) in tabBarItems.enumerated() {
+                guard idx < tabBarButtons.count else { continue }
                 tabBarButtons[idx].isHidden = false
                 moreContentView?.isHidden = true
             }
@@ -206,6 +207,7 @@ internal extension ESTabBar /* Layout */ {
             }
         } else {
             for (idx, item) in tabBarItems.enumerated() {
+                guard idx < tabBarButtons.count else { continue }
                 if let _ = item as? ESTabBarItem {
                     tabBarButtons[idx].isHidden = true
                 } else {
@@ -233,6 +235,7 @@ internal extension ESTabBar /* Layout */ {
         if layoutBaseSystem {
             // System itemPositioning
             for (idx, container) in containers.enumerated(){
+                guard idx < tabBarButtons.count else { continue }
                 if !tabBarButtons[idx].frame.isEmpty {
                     container.frame = tabBarButtons[idx].frame
                 }
